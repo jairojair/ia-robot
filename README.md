@@ -12,3 +12,5 @@ Considere um labirinto, onde um robô deve caminhar da entrada, até encontrar o
 
 A entrada do labirinto está na posição (1,1) da matriz (Estado Inicial), e o ponto final está em uma posição qualquer 
 (aleatória) da matriz. 
+
+Os possiveis movimentos do robo são: dada à posição atual 
