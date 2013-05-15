@@ -26,7 +26,7 @@ O robô somente enxerga a posição imediatamente cima, baixo, direita e esquerd
 Definir uma heurística que faça o robô, caminhar da posição (1,1) até o ponto final, considerando as seguintes situações.
 
 --
-**a.** As posições da matriz podem ser divididas em dois tipos:
+**a. As posições da matriz podem ser divididas em dois tipos:**
 
 - Posições com obstáculos, pelos quais o robô nao poderá passar (posições obscuras).
  
@@ -35,14 +35,14 @@ Definir uma heurística que faça o robô, caminhar da posição (1,1) até o po
 **Obs.** A posição dos estados inicial e final nao podem ser posições obscuras.
 
 --
-**b.** O robô inicia sua caminhada pelo labirinto com 50 "pontos" de energia, e a cada movimento, perde 1 ponto, o jogo pode terminar de duas formas:
+**b. O robô inicia sua caminhada pelo labirinto com 50 "pontos" de energia, e a cada movimento, perde 1 ponto, o jogo pode terminar de duas formas:**
 
 - Quando chega a zero ele "morre" e o jogo termina ( perdeu ).
 
 - Quando chega a posição final p jogo também termina ( ganhou).
 
 --
-**c.** Considerar duas opções que o sistema deverá ter:
+**c. Considerar duas opções que o sistema deverá ter:**
 
 - O estado final está na posição (10,10) e o estado final está em uma posição aleatória.
 
