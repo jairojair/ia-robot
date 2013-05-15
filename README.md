@@ -46,9 +46,9 @@ Definir uma heurística que faça o robô, caminhar da posição ( 1,1 ) até o 
 --
 **c. Considerar opções que o sistema deverá ter:**
 
-- **Estado Final:** Pode ser na posição (10,10) ou em uma posição aleatória.
+- **Estado Final:** Pode estar na posição (10,10) ou em uma posição aleatória.
 
-- **Posições Escuras** são aleatórias, e o número delas podem variar de 10 à 30 posições, isto significa que o labirinto é aleatório.
+- **Posições Escuras:** São aleatórias, e o número delas podem variar de 10 à 30 posições, isto significa que o labirinto é aleatório.
 
 - **Posições Claras:** Podem ser todas são idênticas, ou podem existir posições de recuperação de energia ( 5 posições onde recupera 5 pontos em cada uma e 3 onde recupera 10 pontos, estas posições são aleatórias.
 
