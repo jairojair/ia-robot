@@ -51,5 +51,6 @@ Definir uma heurística que faça o robô, caminhar da posição (1,1) até o po
 - Todas as posições claras são idênticas, ou podem existir posições de recuperação de energia ( 5 posições onde recupera 5 pontos em cada uma e 3 onde recupera 10 pontos, estas posições são aleatórias.
 
 Exemplo de Labirinto:
+
 ![image](assets/img/repo/labirinto.png)
 
