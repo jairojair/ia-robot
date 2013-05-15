@@ -32,7 +32,7 @@ Definir uma heurística que faça o robô, caminhar da posição (1,1) até o po
  
 - Posições sem obstáculos ( Posições claras) pelas quais o robô pode caminhar. 
 
-**Obs.** A posição dos estados inicial e final nao podem ser posições obscuras.
+*Obs.* A posição dos estados inicial e final nao podem ser posições obscuras.
 
 --
 **b. O robô inicia sua caminhada pelo labirinto com 50 "pontos" de energia, e a cada movimento, perde 1 ponto, o jogo pode terminar de duas formas:**
