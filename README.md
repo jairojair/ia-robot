@@ -15,11 +15,13 @@ A entrada do labirinto está na posição (1,1) da matriz (Estado Inicial), e o 
 
 Os possíveis movimentos do robô são: 
 
-- Posição atual ---> ( x,y ) 
-- Cima ------------> ( x+1,y ) 
-- Baixo -----------> ( x-1,y )
-- Direita ---------> ( x,y+1 )
-- Esquerda --------> ( x,y-1 )
+Estado  | Posição
+--------|------
+Atual   | x,y 
+Cima    | x+1,y
+Baixo   | x-1,y
+Direita | x,y+1 
+Esquerda| x,y-1
 
 O robô somente enxerga a posição imediatamente cima, baixo, direita e esquerda.
 
