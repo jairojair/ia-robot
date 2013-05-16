@@ -1,0 +1,31 @@
+.body {
+
+
+}
+
+#map {
+    position: absolute;
+    top: 200px;
+    width: 640px;
+}
+
+
+
+
+.mN 
+{
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    background-color: #fff;
+    font-size: 5px;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+}
+
+
+.grama 
+{
+  background-image: url(../img/world/grama.png);
+}

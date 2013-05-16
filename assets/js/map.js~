@@ -1,0 +1,31 @@
+
+
+var map = Array( 
+    [0,1,2,2,2,2,2,2,2,2],
+    [2,0,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,0,2,2],
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,0,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2],
+    [2,2,2,2,2,2,2,2,2,2]
+);
+
+    for(i=0;i<map.length;i++){
+        for(a=0;a<map[i].length;a++){
+            $('#mapoverlay').append('<li class="mN '+map[i][a]+'">&nbsp;</li>');
+        }
+    }
+
+    $('.mN').each(function() {
+        
+        if ($(this).hasClass('0')) {
+            $(this).css({'background-color':'black'})
+        } else if ($(this).hasClass('1')) {
+            $(this).css({'background-color':'blue'})
+        } else if ($(this).hasClass('2')) {
+            $(this).css({'background-color':'gray'})
+        }
+    });
