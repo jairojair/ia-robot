@@ -1,11 +1,13 @@
-.body {
+body {
 
 
 }
 
 #map {
     position: absolute;
-    top: 200px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-bottom: 100px;
     width: 640px;
 }
 
@@ -18,14 +20,17 @@
     height: 64px;
     display: inline-block;
     background-color: #fff;
-    font-size: 5px;
-    margin: 0px;
-    padding: 0px;
+    font-size: 15px;
     float: left;
 }
 
 
-.grama 
+.Grama 
 {
   background-image: url(../img/world/grama.png);
+}
+
+.Personagem 
+{
+  background-image: url(../img/char/personagem.png);
 }

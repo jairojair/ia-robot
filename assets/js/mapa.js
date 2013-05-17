@@ -1,7 +1,21 @@
 
+// Classe Mapa //
+var Mapa = function()
+{
+
+
+    this.renderizar = function()
+    {
+        
+    }
+
+}
+
+
+
 var map = Array(
 
-    [1,0,0,0,0,0,0,0,0,0],
+    [1,2,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0],
@@ -36,12 +50,17 @@ $('.mN').each(function() {
 
     if ($(this).hasClass('0')) 
     {
-        $(this).addClass('grama');
+        $(this).addClass('Grama');
     }
 
     else if ($(this).hasClass('1')) 
     {
         $(this).css({'background-color':'gray'})
+    }
+    
+    else if ($(this).hasClass('2')) 
+    {
+        $(this).addClass('Personagem');
     }
      
 });
