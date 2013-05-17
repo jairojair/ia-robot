@@ -39,14 +39,14 @@ for( x=0;  x < tam; x++)
 
     for( y=0; y < tam; y++)
     {
-        $('#map').append('<li class="mN '+map[x][y]+'"> '+ (1+x) +' , '+ (y+1) +' </li>');
-        console.log (x+1,y+1);
+        $('#mapa').append('<li class="Bloco '+map[x][y]+'"> '+ (1+x) +' , '+ (y+1) +' </li>');
+        //console.log (x+1,y+1);
     }
 }
 
 
 
-$('.mN').each(function() {
+$('.Bloco').each(function() {
 
     if ($(this).hasClass('0')) 
     {

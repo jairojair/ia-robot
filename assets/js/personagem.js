@@ -1,38 +1,22 @@
 
-// Classe Personagem //
-var Personagem = function(nome,energia) 
+/*
+	Character Class
+*/
+
+var Character = function(name,energy) 
 {
 
+	this.name	= name;
+	this.energy = energy;
 
-	// setters
-	this.setNome = function(nome)
+
+	this.getName = function()
 	{
-		this.nome = nome;
+		return this.name.toString();
 	}
 
-	this.setEnergia = function(energia)
+	this.getEnergy = function()
 	{
-		this.energia = energia;
+		return this.energy;
 	}
-
-
-	// getters
-	this.getNome = function()
-	{
-		return this.nome.toString();
-	}
-
-	this.getEnergia = function()
-	{
-		return this.energia;
-	}
-
-
-	// Metodos //
-	this.andar = function()
-	{
-
-
-	}
-
 }

@@ -1,36 +1,30 @@
-body {
-
-
-}
-
-#map {
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 20px;
-    padding-bottom: 100px;
-    width: 640px;
-}
-
-
-
-
-.mN 
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video 
 {
-    width: 64px;
-    height: 64px;
-    display: inline-block;
-    background-color: #fff;
-    font-size: 15px;
-    float: left;
+    border:0;
+    font:inherit;
+    font-size:100%;
+    margin:0;
+    padding:0;
+    vertical-align:baseline;
 }
 
-
-.Grama 
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section 
 {
-  background-image: url(../img/world/grama.png);
+    display:block;
 }
 
-.Personagem 
+h1 
 {
-  background-image: url(../img/char/personagem.png);
+  font-size: 36px;
+  text-align: center;
+  font-weight: normal;
+  letter-spacing: 2px;
+  color: #007ca6;
+}
+
+#container
+{
+    width: 100%;
+    max-width: 800px;
+    margin: 60px auto;
 }

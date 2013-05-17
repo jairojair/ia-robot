@@ -1,35 +1,30 @@
 
 /* 
-
-  // Onde Jogo acontece //
-
+  Main
 */
+
+
+$( "body" ).keydown(function(event) {
+
+  console.log( event.which );
+
+});
+
+
 
 
 
 $('#NovoJogo').click ( function()
 	{
-		var char  = new Personagem ();
-		var char2 = new Personagem ();
 
-		char.setNome("JJ");
-		char.setEnergia(50);
+		var char  = new Character ("JJ",50);
 
-		nome = char.getNome();
+		nome = char.getName();
 		console.log (nome);
 
-		energia = char.getEnergia();
+		energia = char.getEnergy();
 		console.log (energia);
 
 
-
-		char2.setNome("Joao");
-		char2.setEnergia(60);
-
-		nome = char2.getNome();
-		console.log (nome);
-
-		energia = char2.getEnergia();
-		console.log (energia);
 	}
 )
