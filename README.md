@@ -18,8 +18,8 @@ Os possíveis movimentos do robô são:
 Estado  | Posição
 --------|------
 Atual   | x,y 
-Cima    | x+1,y
-Baixo   | x-1,y
+Cima    | x-1,y
+Baixo   | x+1,y
 Direita | x,y+1 
 Esquerda| x,y-1
 
