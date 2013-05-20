@@ -2,17 +2,17 @@
 $('#newGame').click ( function()
 	{
 
-    var mMap   = new Map();
-		var mRobot = new Character();
+    var mMap    = new Map();
+		var mRobot  = new Character();
     var mScreen = new Screen();
 
-    mScreen.clean("#mapa");
+    mScreen.clean();
 
     // Recupera mapa estatico // 
     retMap = mMap.staticMap();
 
     // Renderiza Mapa //
-    mMap.renderingMap("#mapa", retMap);
+    mMap.renderingMap(retMap);
 
  
     // Pega eventos //
@@ -26,7 +26,9 @@ $('#newGame').click ( function()
         mMap.setMapPosition(lastPos.x-1, lastPos.y-1, 0);
         
 
+        // vai andar //
         mRobot.walk(e.which);
+        // já andou //
         
         currentPos = mRobot.getPos();
 
@@ -43,13 +45,13 @@ $('#newGame').click ( function()
         {
           console.log("--> Coração <---");
 
-          retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.id);
+          retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.getId() );
 
-          mScreen.clean("#mapa");
+          mScreen.clean();
 
           retMap = mMap.getMap();
 
-          mMap.renderingMap("#mapa", retMap);
+          mMap.renderingMap(retMap);
 
         }
 
@@ -57,11 +59,11 @@ $('#newGame').click ( function()
 
           retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.id);
 
-          mScreen.clean("#mapa");
+          mScreen.clean();
 
           retMap = mMap.getMap();
 
-          mMap.renderingMap("#mapa", retMap);
+          mMap.renderingMap(retMap);
         }
 
 		});

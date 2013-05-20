@@ -7,11 +7,12 @@
 var Map = function()
 {
 
+    this.mapName = "#mapa";
     this.mapSize = 10;
     this.map = false;
 
 
-    // get position //
+    // get current map //
     this.getMap = function () 
     {
         return this.map;
@@ -46,14 +47,14 @@ var Map = function()
 
 
     // rendering map on screen //
-    this.renderingMap = function(idName,newMap)
+    this.renderingMap = function(newMap)
     {
 
         for( x=0;  x < this.mapSize; x++)
         {
             for( y=0; y < this.mapSize; y++)
             {
-                $(idName).append('<li class="Bloco '+newMap[x][y]+'"> '+ (x+1) +' , '+ (y+1) +' </li>');
+                $(this.mapName).append('<li class="Bloco '+newMap[x][y]+'"> '+ (x+1) +' , '+ (y+1) +' </li>');
                 //console.log (x+1,y+1);
             }
         }
@@ -113,15 +114,6 @@ var Map = function()
 
 
 }
-
-
-
-
-
-
-
-
-
 
 
 

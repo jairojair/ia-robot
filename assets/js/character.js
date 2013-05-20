@@ -12,11 +12,12 @@ var Character = function ()
 	this.pos = {x: 1, y: 1};
 
 
-	// char name //
-	this.getName = function()
+
+	this.getId = function ()
 	{
-		return this.name.toString();
+		return this.id;
 	}
+
 
 	/********************
 	 ***** Energy *****
@@ -50,6 +51,14 @@ var Character = function ()
 	this.getPos = function ()
 	{
 		return this.pos;
+	}
+
+
+	// look //
+	this.look = function ()
+	{
+
+
 	}
 
 

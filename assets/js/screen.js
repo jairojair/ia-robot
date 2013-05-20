@@ -7,9 +7,13 @@
 var Screen = function ()
 {
 
-	this.clean = function (idName)
+	this.name = "#mapa";
+
+
+	//  clean screen //
+	this.clean = function ()
 	{
-		$(idName).empty();
+		$(this.name).empty();
 	}
 
 }
