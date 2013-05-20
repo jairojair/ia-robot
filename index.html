@@ -8,33 +8,39 @@
 
 	<link type="text/css" rel="stylesheet" href="assets/css/style.css">
 	<link type="text/css" rel="stylesheet" href="assets/css/mundo.css">
-	<link type="text/css" rel="stylesheet" href="assets/css/personagem.css">
+	<link type="text/css" rel="stylesheet" href="assets/css/char.css">
 
 </head>
 <body>
 
-<div id="container">
+	<div id="container">
 
-	<!-- Social Contacts -->
-	<div id="principal">
+		<header id="topo">
+			<h1>The Game</h1>
+		</header>
 
-		<section>
-				<h1>Game</h1>
+		<nav id="menu">
+			<ul>
+				<button id="newGame" class="btn"> New Game</button>
+				<button id="stopGame" class="btn"> Stop Game</button>
+			</ul>
+		</nav>
 
-				<button id="NovoJogo"> New Game</button>
-
-				<ul id="mapa"></ul>
+		<section id="conteudo">
+			<ul id="mapa"></ul>
 		</section>
+		
+		<footer>
+			@UNISUL 2013
+		</footer>
 
 	</div>
-
-</div>
 
 </body>
 
 <script src="assets/js/jquery.js"></script>
-<script src="assets/js/mapa.js"></script>
-<script src="assets/js/personagem.js"></script>
+<script src="assets/js/map.js"></script>
+<script src="assets/js/character.js"></script>
 <script src="assets/js/main.js"></script>
 
 </html>

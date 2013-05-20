@@ -1,30 +1,38 @@
 
-/* 
-  Main
-*/
-
-
-$( "body" ).keydown(function(event) {
-
-  console.log( event.which );
-
-});
-
-
-
-
-
-$('#NovoJogo').click ( function()
+$('#newGame').click ( function()
 	{
 
-		var char  = new Character ("JJ",50);
+    var map = new Map();
+		var robot = new Character();
 
-		nome = char.getName();
-		console.log (nome);
+    // Recupera mapa estatico // 
+    m = map.staticMap();
 
-		energia = char.getEnergy();
-		console.log (energia);
+    // Renderiza Mapa //
+    map.renderingMap("#mapa", m);
+
+    // Pega eventos //
+		$("body").keydown(function(e) 
+		{
+  			//console.log(event.which);
+        robot.walk(e.which);
+
+		});
+
 
 
 	}
-)
+);
+
+
+$('#stopGame').click ( function()
+  {
+   
+   location.reload();
+
+  }
+);
+
+
+
+

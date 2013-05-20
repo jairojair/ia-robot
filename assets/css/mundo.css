@@ -5,8 +5,8 @@
     position: absolute;
     margin-top: 40px;
     margin-left: 20px;
-    padding-bottom: 100px;
     width: 640px;
+    border: 2px  solid green;
 }
 
 
@@ -14,6 +14,30 @@
 {
   background-image: url(../img/world/grama.png);
 }
+
+
+.Rock 
+{
+  background-image: url(../img/world/rock.png);
+}
+
+
+.Heart-10 
+{
+  background-image: url(../img/world/heart-10.png);
+}
+
+
+.Heart-5
+{
+  background-image: url(../img/world/heart-5.png);
+}
+
+.Key
+{
+  background-image: url(../img/world/key.png);
+}
+
 
 .Bloco
 {
