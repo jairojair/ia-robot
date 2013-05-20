@@ -7,7 +7,7 @@
 var Character = function () 
 {
 
-	this.name	= "Robot";
+	this.id	= 5;
 	this.energy = 50;
 	this.pos = {x: 1, y: 1};
 
