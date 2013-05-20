@@ -23,13 +23,13 @@ var Character = function ()
 	 ********************/
 
 	// new energy //
-	this.setEnergy = function(energy)
+	this.setEnergy = function (energy)
 	{
 		this.energy = energy;
 	}
 
 	// current energy //
-	this.getEnergy = function()
+	this.getEnergy = function ()
 	{
 		return this.energy;
 	}
@@ -47,7 +47,7 @@ var Character = function ()
 
 
 	// current position //
-	this.getPos = function()
+	this.getPos = function ()
 	{
 		return this.pos;
 	}
@@ -155,23 +155,6 @@ var Character = function ()
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

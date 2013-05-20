@@ -2,24 +2,25 @@
 $('#newGame').click ( function()
 	{
 
-    var map = new Map();
-		var robot = new Character();
+    var mMap   = new Map();
+		var mRobot = new Character();
+    var mScreen = new Screen();
+
+    mScreen.clean("#mapa");
 
     // Recupera mapa estatico // 
-    m = map.staticMap();
+    retMap = mMap.staticMap();
 
     // Renderiza Mapa //
-    map.renderingMap("#mapa", m);
+    mMap.renderingMap("#mapa", retMap);
 
     // Pega eventos //
 		$("body").keydown(function(e) 
 		{
   			//console.log(event.which);
-        robot.walk(e.which);
+        mRobot.walk(e.which);
 
 		});
-
-
 
 	}
 );
