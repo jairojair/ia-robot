@@ -39,8 +39,8 @@ $('#newGame').click ( function()
         retMap = mMap.getMap();
 
         mMap.renderingMap(retMap);
-        
         }
+
 
 
 		});

@@ -58,6 +58,8 @@ var Character = function ()
 	this.think = function (value)
 	{
 
+		var status;
+
 		console.log("Position Value:", value);
 
 		switch(value)
@@ -65,29 +67,36 @@ var Character = function ()
 
 			case 0:
 				console.log("Grama");
-				return true;
+				status = true;
 				break;
 
 			case 1:
 				console.log("Rock");
-				return false;
+				status = false;
 				break;
 
 			case 2:
-				console.log("Heart-10");
-				return true;
+				console.log("Heart10");
+				this.sumEnergy(10);
+				status = true;
 				break;
 
 			case 3:
-				console.log("Heart-5");
-				return true;
+				console.log("Heart5");
+				this.sumEnergy(5);
+				status = true;
 				break;
 
 			case 4:
 				console.log("Victory !!!!");
-				return true;
+				status = true;
 				break;
+
+			default:
+
 		}
+
+		return status;
 
 	}
 
@@ -111,8 +120,6 @@ var Character = function ()
 				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)-1, currentPos.y-1);
 
 				result = this.think(value);
-
-				return result;
 				
 				break;
 			
@@ -129,7 +136,6 @@ var Character = function ()
 
 				result = this.think(value);
 
-				return result;
 
   				break;
 
@@ -147,7 +153,6 @@ var Character = function ()
 
 				result = this.think(value);
 
-				return result;
   				break;
 
 
@@ -164,12 +169,12 @@ var Character = function ()
 
 				result = this.think(value);
 
-				return result;
   				break;
 
 
 		}
-		return true;
+						
+		return result;
 	}
 
 
@@ -192,7 +197,7 @@ var Character = function ()
 				{
 					this.setPos(P.x-1 , P.y);
 					console.log("Current Position:",P.x-1, P.y);
-					this.losesEnergy();
+					this.subEnergy();
 				}
 				
 				break;
@@ -209,7 +214,7 @@ var Character = function ()
 				{
 					this.setPos(P.x+1 , P.y);
 					console.log("Current Position:",P.x+1, P.y);
-					this.losesEnergy();
+					this.subEnergy();
 				}
 
   				break;
@@ -226,7 +231,7 @@ var Character = function ()
 				{
 					this.setPos(P.x , P.y-1);
 					console.log("Current Position:", P.x, P.y-1);
-					this.losesEnergy();
+					this.subEnergy();
 				}
 
   				break;
@@ -243,7 +248,7 @@ var Character = function ()
 				{
 					this.setPos(P.x , P.y+1);
 					console.log("Current Position:",P.x, P.y+1);
-					this.losesEnergy();
+					this.subEnergy();
 				}				
   				break;
 
@@ -256,8 +261,8 @@ var Character = function ()
 	}
 
 
-	// loses Energy //
-	this.losesEnergy = function ()
+	// substration Energy //
+	this.subEnergy = function ()
 	{
 		energy = this.getEnergy();
 		this.setEnergy(energy - 1);
@@ -265,6 +270,15 @@ var Character = function ()
 
 		if (this.getEnergy() < 1)
 			this.die();
+	}
+
+
+	// sum energy //
+	this.sumEnergy = function (energyPlus)
+	{
+		energy = this.getEnergy();
+		this.setEnergy(energy + energyPlus);
+		console.log("new Energy:", energy + energyPlus);
 	}
 
 
