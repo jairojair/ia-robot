@@ -20,51 +20,28 @@ $('#newGame').click ( function()
 		{
 
         lastPos = mRobot.getPos();
-        valor = mMap.getMapPosition(retMap, lastPos.x-1, lastPos.y-1);
-        console.log("Last:",valor);
+        mMap.renderingCell(lastPos);
 
-        mMap.setMapPosition(lastPos.x-1, lastPos.y-1, 0);
-        
+        // look //
+        result = mRobot.look(e.which, mMap, mScreen);
 
-        // vai andar //
+        if (result == true)
+        {
+
         mRobot.walk(e.which);
-        // já andou //
-        
+
         currentPos = mRobot.getPos();
 
-        valor = mMap.getMapPosition(retMap, currentPos.x-1, currentPos.y-1);
-        console.log("Current:",valor);
+        retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.getId() );
+
+        mScreen.clean();
+
+        retMap = mMap.getMap();
+
+        mMap.renderingMap(retMap);
         
-        if (valor == 1)
-        {
-          mRobot.setPos(lastPos.x, lastPos.y);
-
         }
 
-        else if (valor == 2 || valor == 3 )
-        {
-          console.log("--> Coração <---");
-
-          retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.getId() );
-
-          mScreen.clean();
-
-          retMap = mMap.getMap();
-
-          mMap.renderingMap(retMap);
-
-        }
-
-        else {
-
-          retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.id);
-
-          mScreen.clean();
-
-          retMap = mMap.getMap();
-
-          mMap.renderingMap(retMap);
-        }
 
 		});
 

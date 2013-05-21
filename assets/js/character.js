@@ -54,11 +54,122 @@ var Character = function ()
 	}
 
 
-	// look //
-	this.look = function ()
+	// think //
+	this.think = function (value)
 	{
 
+		console.log("Position Value:", value);
 
+		switch(value)
+		{
+
+			case 0:
+				console.log("Grama");
+				return true;
+				break;
+
+			case 1:
+				console.log("Rock");
+				return false;
+				break;
+
+			case 2:
+				console.log("Heart-10");
+				return true;
+				break;
+
+			case 3:
+				console.log("Heart-5");
+				return true;
+				break;
+
+			case 4:
+				console.log("Victory !!!!");
+				return true;
+				break;
+		}
+
+	}
+
+
+	// look //
+	this.look = function (direction,cMap,cScreen)
+	{
+
+		switch(direction)
+		{
+
+			// UP //
+			case 87:
+
+				console.log("Look: UP");
+
+				currentPos = this.getPos();
+
+				console.log("Look Position:", currentPos.x-1 , currentPos.y);
+
+				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)-1, currentPos.y-1);
+
+				result = this.think(value);
+
+				return result;
+				
+				break;
+			
+			// Down //
+			case 83:
+
+				console.log("Look: Down");
+
+				currentPos = this.getPos();
+
+				console.log("Look Position:", currentPos.x+1 , currentPos.y);
+
+				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)+1, currentPos.y-1);
+
+				result = this.think(value);
+
+				return result;
+
+  				break;
+
+
+  			// Left //
+			case 65:
+
+				console.log("Look: Left");
+
+				currentPos = this.getPos();
+
+				console.log("Look Position:", currentPos.x, currentPos.y-1);
+
+				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)-1);
+
+				result = this.think(value);
+
+				return result;
+  				break;
+
+
+			// Right //
+			case 68:
+
+				console.log("Look: Right");
+
+				currentPos = this.getPos();
+
+				console.log("Look Position:", currentPos.x, currentPos.y+1);
+
+				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)+1);
+
+				result = this.think(value);
+
+				return result;
+  				break;
+
+
+		}
+		return true;
 	}
 
 

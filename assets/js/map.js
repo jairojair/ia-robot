@@ -112,6 +112,12 @@ var Map = function()
         this.map[x][y] = newValue;
     }
 
+    // rendering cell //
+    this.renderingCell = function(cellPos)
+    {
+        this.setMapPosition(cellPos.x-1, cellPos.y-1, 0);
+    }
+
 
 }
 
