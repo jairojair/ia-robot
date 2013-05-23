@@ -12,7 +12,6 @@ var Character = function ()
 	this.pos = {x: 1, y: 1};
 
 
-
 	this.getId = function ()
 	{
 		return this.id;
@@ -65,29 +64,29 @@ var Character = function ()
 		switch(value)
 		{
 
-			case 0:
-				console.log("Grama");
+			case OBJECT.GRASS:
+				console.log("Grass");
 				status = true;
 				break;
 
-			case 1:
+			case OBJECT.ROCK:
 				console.log("Rock");
 				status = false;
 				break;
 
-			case 2:
+			case OBJECT.HEART10:
 				console.log("Heart10");
 				this.sumEnergy(10);
 				status = true;
 				break;
 
-			case 3:
+			case OBJECT.HEART5:
 				console.log("Heart5");
 				this.sumEnergy(5);
 				status = true;
 				break;
 
-			case 4:
+			case OBJECT.KEY:
 				console.log("Victory !!!!");
 				status = true;
 				break;
@@ -109,7 +108,7 @@ var Character = function ()
 		{
 
 			// UP //
-			case 87:
+			case MOVE.UP:
 
 				console.log("Look: UP");
 
@@ -124,7 +123,7 @@ var Character = function ()
 				break;
 			
 			// Down //
-			case 83:
+			case MOVE.DOWN:
 
 				console.log("Look: Down");
 
@@ -141,7 +140,7 @@ var Character = function ()
 
 
   			// Left //
-			case 65:
+			case MOVE.LEFT:
 
 				console.log("Look: Left");
 
@@ -157,7 +156,7 @@ var Character = function ()
 
 
 			// Right //
-			case 68:
+			case MOVE.RIGHT:
 
 				console.log("Look: Right");
 
@@ -187,7 +186,7 @@ var Character = function ()
 			
 
 			// UP //
-			case 87:
+			case MOVE.UP:
 
 				console.log("Move: Up");
 
@@ -204,7 +203,7 @@ var Character = function ()
 
 			
 			// Down //
-			case 83:
+			case MOVE.DOWN:
 
 				console.log("Move: Down");
 
@@ -221,7 +220,7 @@ var Character = function ()
 			
 
 			// Left //
-			case 65:
+			case MOVE.LEFT:
 
 				console.log("Move: Left");
 
@@ -238,7 +237,7 @@ var Character = function ()
 
 
 			// Right //
-			case 68:
+			case MOVE.RIGHT:
 
 				console.log("Move: Right");
 

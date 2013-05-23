@@ -54,18 +54,18 @@ var Map = function()
         {
             for( y=0; y < this.mapSize; y++)
             {
-                $(this.mapName).append('<li class="Bloco '+newMap[x][y]+'"> '+ (x+1) +' , '+ (y+1) +' </li>');
+                $(this.mapName).append('<li class="Block '+newMap[x][y]+'"> '+ (x+1) +' , '+ (y+1) +' </li>');
                 //console.log (x+1,y+1);
             }
         }
 
 
-        $('.Bloco').each(function() 
+        $('.Block').each(function() 
             {
 
                 if ($(this).hasClass('0')) 
                 {
-                    $(this).addClass('Grama');
+                    $(this).addClass('Grass');
                 }
 
                 if ($(this).hasClass('1')) 

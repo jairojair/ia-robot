@@ -3,7 +3,7 @@ $('#newGame').click ( function()
 	{
 
     var mMap    = new Map();
-		var mRobot  = new Character();
+	var mRobot  = new Character();
     var mScreen = new Screen();
 
     mScreen.clean();
@@ -11,39 +11,40 @@ $('#newGame').click ( function()
     // Recupera mapa estatico // 
     retMap = mMap.staticMap();
 
+    console.log(retMap);
+
     // Renderiza Mapa //
     mMap.renderingMap(retMap);
 
  
     // Pega eventos //
-		$("body").keydown(function(e) 
+	$("body").keydown(function(e) 
 		{
 
         lastPos = mRobot.getPos();
         mMap.renderingCell(lastPos);
 
         // look //
-        result = mRobot.look(e.which, mMap, mScreen);
+        result = mRobot.look(e.which, mMap, mScreen,MOVE);
 
         if (result == true)
         {
 
-        mRobot.walk(e.which);
+            mRobot.walk(e.which);
 
-        currentPos = mRobot.getPos();
+            currentPos = mRobot.getPos();
 
-        retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.getId() );
+            retMap = mMap.setMapPosition(currentPos.x-1, currentPos.y-1, mRobot.getId() );
 
-        mScreen.clean();
+            mScreen.clean();
 
-        retMap = mMap.getMap();
+            retMap = mMap.getMap();
 
-        mMap.renderingMap(retMap);
+            mMap.renderingMap(retMap);
         }
 
 
-
-		});
+	});
 
 	}
 );
