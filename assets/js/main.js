@@ -11,8 +11,6 @@ $('#newGame').click ( function()
     // Recupera mapa estatico // 
     retMap = mMap.staticMap();
 
-    console.log(retMap);
-
     // Renderiza Mapa //
     mMap.renderingMap(retMap);
 
