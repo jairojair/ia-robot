@@ -80,32 +80,34 @@ var Character = function ()
 
 			case OBJECT.GRASS:
 				console.log("Grass");
-				status = true;
+				status = OBJECT.GRASS;
 				break;
 
 			case OBJECT.ROCK:
 				console.log("Rock");
-				status = false;
+				status = OBJECT.ROCK;
 				break;
 
 			case OBJECT.HEART10:
 				console.log("Heart10");
 				this.sumEnergy(10);
-				status = true;
+				status = OBJECT.HEART10;
 				break;
 
 			case OBJECT.HEART5:
 				console.log("Heart5");
 				this.sumEnergy(5);
-				status = true;
+				status = OBJECT.HEART5;
 				break;
 
 			case OBJECT.KEY:
 				console.log("Victory !!!!");
-				status = true;
+				status = OBJECT.KEY;
 				break;
 
 			default:
+				console.log("Wall");
+				status = OBJECT.WALL;
 
 		}
 
@@ -128,7 +130,7 @@ var Character = function ()
 
 				if (currentPos.x <= 1)
 				{
-					result = false;
+					status = false;
 					break;
 				}
 
@@ -137,9 +139,9 @@ var Character = function ()
 
 				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)-1, currentPos.y-1);
 
-				result = this.think(value);
+				status = this.think(value);
 
-				if (result == true)
+				if (status != OBJECT.ROCK &&  status != OBJECT.WALL)
 				{
 					cMap.renderingCell(currentPos);
 					this.walk(MOVE.UP);
@@ -156,7 +158,7 @@ var Character = function ()
 
 				if (currentPos.x >= 10)
 				{
-					result = false;
+					status = false;
 					break;
 				}
 
@@ -164,9 +166,9 @@ var Character = function ()
 				console.log("Look Position:", currentPos.x+1 , currentPos.y);
 
 				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)+1, currentPos.y-1);
-				result = this.think(value);
+				status = this.think(value);
 
-				if (result == true)
+				if (status != OBJECT.ROCK &&  status != OBJECT.WALL)
 				{
 					cMap.renderingCell(currentPos);
 					this.walk(MOVE.DOWN);
@@ -183,7 +185,7 @@ var Character = function ()
 
 				if (currentPos.y <= 1)
 				{
-					result = false;
+					status = false;
 					break;
 				}
 
@@ -192,9 +194,9 @@ var Character = function ()
 
 				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)-1);
 
-				result = this.think(value);
+				status = this.think(value);
 
-				if (result == true)
+				if (status != OBJECT.ROCK &&  status != OBJECT.WALL)
 				{
 					cMap.renderingCell(currentPos);
 					this.walk(MOVE.LEFT);
@@ -212,7 +214,7 @@ var Character = function ()
 				
 				if (currentPos.y >= 10)
 				{
-					result = false;
+					status = false;
 					break;
 				}
 
@@ -221,9 +223,9 @@ var Character = function ()
 
 				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)+1);
 
-				result = this.think(value);
+				status = this.think(value);
 
-				if (result == true)
+				if (status != OBJECT.ROCK && status != OBJECT.WALL)
 				{
 					cMap.renderingCell(currentPos);
 					this.walk(MOVE.RIGHT);
@@ -236,7 +238,7 @@ var Character = function ()
 
 		}
 						
-		return result;
+		return status;
 	}
 
 

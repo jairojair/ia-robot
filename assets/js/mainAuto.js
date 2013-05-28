@@ -11,31 +11,28 @@ $('#newGameIA').click ( function()
     // Recupera mapa estatico // 
     retMap = mMap.staticMap();
 
-    // Recupera a posição onde está a chave para testar se mapa é valido //
-    endPos = mMap.getMapValue(retMap, OBJECT.KEY);
+    do {
+        // testa se o mapa é valido //
+        testResult = mMap.testMap();
 
-    // Cria o Grafo //
-    mGraph = new Graph(retMap);
-
-    var end = mGraph.nodes[endPos.x][endPos.y];
-
-    var result = astar.search(mGraph.nodes, end);
-
-    for (var i = 0; i < result.length; i++) 
-    {
-        console.log(result[i].pos.x+1,result[i].pos.y+1);
-    };
-
+    }while (testResult != STATUS.SUCCESS);
 
     // Renderiza Mapa //
     mMap.renderingMap(retMap);
+
+    
+    // set final position //
+   // end = cGraph.nodes[endPos.x][endPos.y];
+
+    // search path //
+    //result = astar.search(cGraph.nodes, end);
 
     // Intervalo para movimentação do Personagem //
     setInterval(function() { main() }, mRobot.getSpeed() );
 
     function main()
     {
-            result = mRobot.look(MOVE.DOWN, mMap, mScreen);
+          //mRobot.look(MOVE.DOWN, mMap, mScreen);
     }
 
 	

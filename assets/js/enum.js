@@ -20,5 +20,13 @@ var OBJECT = {
 	ROCK	: 1,
 	HEART10	: 2,
 	HEART5	: 3,
-	KEY		: 4
+	KEY		: 4,
+	WALL	: 10
+}
+
+
+var STATUS = {
+
+	SUCCESS	: 0,
+	ERROR	: -1
 }

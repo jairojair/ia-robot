@@ -28,13 +28,13 @@ var Map = function()
                     [5,1,0,0,2,0,0,0,0,1],
                     [0,1,1,1,1,0,1,1,1,1],
                     [0,3,0,0,0,0,0,0,0,0],
-                    [0,1,1,1,3,0,0,1,2,4],
+                    [0,1,1,1,3,0,0,1,2,0],
                     [0,0,0,1,1,0,0,1,1,0],
                     [0,1,0,1,2,0,0,1,0,0],
                     [0,3,0,0,0,1,1,1,3,1],
                     [0,0,1,0,0,0,0,1,0,1],
                     [0,0,1,0,1,0,0,0,0,0],
-                    [0,0,1,0,1,2,0,1,1,0]
+                    [0,0,1,0,1,2,0,1,1,4]
                     ]);
     
     }
@@ -118,8 +118,8 @@ var Map = function()
         this.setMapPosition(cellPos.x-1, cellPos.y-1, 0);
     }
 
-
-    this.getMapValue = function (newMap, value)
+    // get map position by value //
+    this.getMapPositionByValue = function (newMap, value)
     {
         for( x=0;  x < this.mapSize; x++)
         {
@@ -132,6 +132,39 @@ var Map = function()
                 }
             }
         }
+    }
+
+    // test map //
+    this.testMap = function ()
+    {
+
+        // Recupera a posição onde está a chave para testar se mapa é valido //
+        endPos = this.getMapPositionByValue(this.getMap(), OBJECT.KEY);
+
+        // create Graph //
+        cGraph = new Graph(this.getMap());
+
+        // set final position //
+        end = cGraph.nodes[endPos.x][endPos.y];
+
+        // search path //
+        result = astar.search(cGraph.nodes, end);
+
+        if(result.length > 0)
+        {
+            console.log("Mapa tem solução");
+            
+            // show path //
+            for (var i = 0; i < result.length; i++) 
+            {
+               // console.log(result[i].pos.x+1,result[i].pos.y+1);
+            };
+            return STATUS.SUCCESS;
+        }
+
+        console.log("Mapa sem solução");
+        return STATUS.ERROR;
+
     }
 
 }
