@@ -74,7 +74,7 @@ var Search = function ()
 
 
 	// Astar //
-	this.Astar = function(grid, aRobot, aMap, aScreen) 
+	this.Astar = function(grid, mRobot, mMap, mScreen) 
     {
 
        // setInterval(function() { main() }, aRobot.getSpeed() );
@@ -99,40 +99,39 @@ var Search = function ()
             var currentNode = openHeap.pop();
 
             
-            // robotPos = aRobot.getPos();
+                // robotPos = mRobot.getPos();
 
-            // console.log("Corr x:",currentNode.x , currentNode.y);
-            // console.log("Robo x:",robotPos.x, robotPos.y);
-            
-   
+                // console.log("Corr x:", currentNode.x+1 , currentNode.y+1);
+                // console.log("Robo x:",robotPos.x, robotPos.y);
 
-            //     if (currentNode.x > robotPos.x)
-            //     {
-            //         console.log("DOWN");
-            //         aRobot.look(MOVE.DOWN, aMap, aScreen);
-            //     }
 
-            //     if (currentNode.x < robotPos.x)
-            //     {
-            //         console.log("UP");
-            //         aRobot.look(MOVE.UP, aMap, aScreen);
-            //     }
+                // if (currentNode.x > robotPos.x)
+                // {
+                //     console.log("DOWN");
+                //     mRobot.look(MOVE.DOWN, mMap, mScreen);
+                // }
+
+                // else if (currentNode.x < robotPos.x)
+                // {
+                //     console.log("UP");
+                //     mRobot.look(MOVE.UP, mMap, mScreen);
+                // }
                 
 
       
-            //     if (currentNode.y < robotPos.y)
-            //     {
-            //         console.log("LEFT");
-            //         aRobot.look(MOVE.LEFT, aMap, aScreen);
-            //     }
+                // else if (currentNode.y < robotPos.y)
+                // {
+                //     console.log("LEFT");
+                //     mRobot.look(MOVE.LEFT, mMap, mScreen);
+                // }
 
 
-            //     if (currentNode.y > robotPos.y)
-            //     {
-            //         console.log("RIGHT");
-            //         aRobot.look(MOVE.RIGHT, aMap, aScreen);
-            //     }
-                
+                // else if (currentNode.y > robotPos.y)
+                // {
+                //     console.log("RIGHT");
+                //     mRobot.look(MOVE.RIGHT, mMap, mScreen);
+
+                // }
         
 
             // End case -- result has been found, return the traced path.

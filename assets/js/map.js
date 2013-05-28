@@ -135,7 +135,7 @@ var Map = function()
             // show path //
             for (var i = 0; i < result.length; i++) 
             {
-              // console.log(result[i].pos.x+1,result[i].pos.y+1);
+              console.log(result[i].pos.x+1,result[i].pos.y+1);
             };
             return STATUS.SUCCESS;
         }

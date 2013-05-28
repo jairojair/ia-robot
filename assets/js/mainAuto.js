@@ -27,9 +27,7 @@ $('#newGameIA').click ( function()
 
     currentNode = mSearch.Astar(mGraph.nodes, mRobot, mMap, mScreen);
 
-    console.log(currentNode);
-
-    console.log("Corr x:", currentNode.x , currentNode.y);
+//    console.log(currentNode);
 
 
     setInterval(function() { main() }, mRobot.getSpeed() );
@@ -42,8 +40,8 @@ $('#newGameIA').click ( function()
 
                 robotPos = mRobot.getPos();
 
-                console.log("Corr x:", currentNode[i].x+1 , currentNode[i].y+1);
-                console.log("Robo x:",robotPos.x, robotPos.y);
+                //console.log("Corr x:", currentNode[i].x+1 , currentNode[i].y+1);
+                //console.log("Robo x:",robotPos.x, robotPos.y);
 
 
                 if (currentNode[i].x+1 > robotPos.x)
@@ -81,9 +79,7 @@ $('#newGameIA').click ( function()
                     return;
                 }
 
-                mRobot.look(MOVE.DOWN, mMap, mScreen);
-
-
+                //mRobot.look(MOVE.DOWN, mMap, mScreen);
 
             i++;
 
