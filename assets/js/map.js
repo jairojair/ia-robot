@@ -25,7 +25,7 @@ var Map = function()
     
         return  this.map = ([
 
-                    [5,1,0,0,2,0,0,0,0,1],
+                    [5,1,0,0,2,0,0,0,4,1],
                     [0,1,1,1,1,0,1,1,1,1],
                     [0,3,0,0,0,0,0,0,0,0],
                     [0,1,1,1,3,0,0,1,2,0],
@@ -34,7 +34,7 @@ var Map = function()
                     [0,3,0,0,0,1,1,1,3,1],
                     [0,0,1,0,0,0,0,1,0,1],
                     [0,0,1,0,1,0,0,0,0,0],
-                    [0,0,1,0,1,2,0,1,1,4]
+                    [0,0,1,0,1,2,0,1,1,0]
                     ]);
     
     }
@@ -115,7 +115,7 @@ var Map = function()
     // rendering cell //
     this.renderingCell = function(cellPos)
     {
-        this.setMapPosition(cellPos.x-1, cellPos.y-1, 0);
+        this.setMapPosition(cellPos.x-1, cellPos.y-1, 6);
     }
 
     // test map //
@@ -135,7 +135,7 @@ var Map = function()
             // show path //
             for (var i = 0; i < result.length; i++) 
             {
-               console.log(result[i].pos.x+1,result[i].pos.y+1);
+              // console.log(result[i].pos.x+1,result[i].pos.y+1);
             };
             return STATUS.SUCCESS;
         }
