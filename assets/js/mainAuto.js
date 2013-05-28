@@ -20,19 +20,12 @@ $('#newGameIA').click ( function()
     // Renderiza Mapa //
     mMap.renderingMap(retMap);
 
-    
-    // set final position //
-   // end = cGraph.nodes[endPos.x][endPos.y];
-
-    // search path //
-    //result = astar.search(cGraph.nodes, end);
-
     // Intervalo para movimentação do Personagem //
     setInterval(function() { main() }, mRobot.getSpeed() );
 
     function main()
     {
-          //mRobot.look(MOVE.DOWN, mMap, mScreen);
+       // mRobot.look(MOVE.DOWN, mMap, mScreen);
     }
 
 	

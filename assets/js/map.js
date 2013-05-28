@@ -118,46 +118,24 @@ var Map = function()
         this.setMapPosition(cellPos.x-1, cellPos.y-1, 0);
     }
 
-    // get map position by value //
-    this.getMapPositionByValue = function (newMap, value)
-    {
-        for( x=0;  x < this.mapSize; x++)
-        {
-            for( y=0; y < this.mapSize; y++)
-            {
-                if(newMap[x][y] == value)
-                {
-                    endPos = {x: x, y: y};
-                    return endPos;
-                }
-            }
-        }
-    }
-
     // test map //
     this.testMap = function ()
     {
 
-        // Recupera a posição onde está a chave para testar se mapa é valido //
-        endPos = this.getMapPositionByValue(this.getMap(), OBJECT.KEY);
-
         // create Graph //
         cGraph = new Graph(this.getMap());
 
-        // set final position //
-        end = cGraph.nodes[endPos.x][endPos.y];
-
         // search path //
-        result = astar.search(cGraph.nodes, end);
+        result = astar.search(cGraph.nodes);
 
-        if(result.length > 0)
+        if(result != STATUS.ERROR)
         {
             console.log("Mapa tem solução");
             
             // show path //
             for (var i = 0; i < result.length; i++) 
             {
-               // console.log(result[i].pos.x+1,result[i].pos.y+1);
+               console.log(result[i].pos.x+1,result[i].pos.y+1);
             };
             return STATUS.SUCCESS;
         }

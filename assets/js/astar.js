@@ -29,34 +29,35 @@ var astar = {
     },
     
     
-    search: function(grid, end) 
+    search: function(grid) 
     {
         
+        // init nodes //
         astar.init(grid);
 
-        // heuristic //
-        heuristic = astar.manhattan;
-
         // start position //
-        start = cGraph.nodes[0][0];
+        start = grid[0][0];
 
+        // init heap //
         var openHeap = astar.heap();
 
+        // insert fist node to heap //
         openHeap.push(start);
 
         while(openHeap.size() > 0) 
         {
-            console.log(openHeap.size() );
 
             // Grab the lowest f(x) to process next.  Heap keeps this sorted for us.
             var currentNode = openHeap.pop();
 
             // End case -- result has been found, return the traced path.
-            if(currentNode === end) 
+            if(currentNode.type === OBJECT.KEY) 
             {
                 var curr = currentNode;
                 var ret = [];
-                while(curr.parent) {
+                
+                while(curr.parent) 
+                {
                     ret.push(curr);
                     curr = curr.parent;
                 }
@@ -66,7 +67,7 @@ var astar = {
             // Normal case -- move currentNode from open to closed, process each of its neighbors.
             currentNode.closed = true;
 
-            // Find all neighbors for the current node. Optionally find diagonal neighbors as well (false by default).
+            // Find all neighbors for the current node.
             var neighbors = astar.neighbors(grid, currentNode);
 
             for(var i=0, il = neighbors.length; i < il; i++) 
@@ -75,7 +76,7 @@ var astar = {
 
                 if(neighbor.closed || neighbor.type == OBJECT.ROCK) 
                 {
-                    // Not a valid node to process, skip to next neighbor.
+                    // Not a valid node, skip to next neighbor.
                     continue;
                 }
 
@@ -90,35 +91,29 @@ var astar = {
                     // Found an optimal (so far) path to this node.  Take score for node to see how good it is.
                     neighbor.visited = true;
                     neighbor.parent = currentNode;
-                    neighbor.h = neighbor.h || heuristic(neighbor.pos, end.pos);
+                    neighbor.h = neighbor.h;
                     neighbor.g = gScore;
                     neighbor.f = neighbor.g + neighbor.h;
 
-                    if (!beenVisited) {
+                    if (!beenVisited) 
+                    {
                         // Pushing to heap will put it in proper place based on the 'f' value.
                         openHeap.push(neighbor);
+                        //console.log(neighbor);
                     }
                     else {
                         // Already seen the node, but since it has been rescored we need to reorder it in the heap
                         openHeap.rescoreElement(neighbor);
+                        //console.log(neighbor);
                     }
                 }
             }
         }
 
-        // No result was found - empty array signifies failure to find path.
-        return [];
+        // No found solution to this graph //
+        return STATUS.ERROR;
     },
     
-    manhattan: function(pos0, pos1) 
-    {
-        // See list of heuristics: http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
-
-        var d1 = Math.abs (pos1.x - pos0.x);
-        var d2 = Math.abs (pos1.y - pos0.y);
-
-        return d1 + d2;
-    },
     
     neighbors: function(grid, node) 
     {
@@ -130,31 +125,24 @@ var astar = {
         if(grid[x-1] && grid[x-1][y]) 
         {
             ret.push(grid[x-1][y]);
-            console.log("MoveUP");
-            mRobot.look(MOVE.UP, mMap, mScreen);
         }
 
         // DOWN
         if(grid[x+1] && grid[x+1][y]) 
         {
             ret.push(grid[x+1][y]);
-            console.log("MoveDOWN");
-             mRobot.look(MOVE.DOWN, mMap, mScreen);
         }
 
         // LEFT
         if(grid[x] && grid[x][y-1]) 
         {
             ret.push(grid[x][y-1]);
-            console.log("MoveLEFT");
-            mRobot.look(MOVE.LEFT, mMap, mScreen);
         }
 
         // RIGHT
-        if(grid[x] && grid[x][y+1]) {
+        if(grid[x] && grid[x][y+1]) 
+        {
             ret.push(grid[x][y+1]);
-            console.log("MoveRIGHT");
-            mRobot.look(MOVE.RIGHT, mMap, mScreen);
         }
 
         return ret;
