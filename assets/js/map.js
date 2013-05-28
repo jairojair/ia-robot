@@ -23,19 +23,19 @@ var Map = function()
     this.staticMap = function()
     {
     
-        return  this.map = Array (
+        return  this.map = ([
 
                     [5,1,0,0,2,0,0,0,0,1],
                     [0,1,1,1,1,0,1,1,1,1],
                     [0,3,0,0,0,0,0,0,0,0],
-                    [0,1,1,1,3,0,0,1,2,0],
+                    [0,1,1,1,3,0,0,1,2,4],
                     [0,0,0,1,1,0,0,1,1,0],
                     [0,1,0,1,2,0,0,1,0,0],
                     [0,3,0,0,0,1,1,1,3,1],
                     [0,0,1,0,0,0,0,1,0,1],
                     [0,0,1,0,1,0,0,0,0,0],
-                    [0,0,1,0,1,2,0,1,1,4]
-                    );
+                    [0,0,1,0,1,2,0,1,1,0]
+                    ]);
     
     }
 
@@ -118,6 +118,21 @@ var Map = function()
         this.setMapPosition(cellPos.x-1, cellPos.y-1, 0);
     }
 
+
+    this.getMapValue = function (newMap, value)
+    {
+        for( x=0;  x < this.mapSize; x++)
+        {
+            for( y=0; y < this.mapSize; y++)
+            {
+                if(newMap[x][y] == value)
+                {
+                    endPos = {x: x, y: y};
+                    return endPos;
+                }
+            }
+        }
+    }
 
 }
 

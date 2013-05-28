@@ -27,5 +27,4 @@ var Search = function ()
 		
 	}
 
-
 }

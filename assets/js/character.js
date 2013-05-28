@@ -10,11 +10,25 @@ var Character = function ()
 	this.id	= 5;
 	this.energy = 50;
 	this.pos = {x: 1, y: 1};
+	this.die = false;
+	this.speed = 300;
 
 
 	this.getId = function ()
 	{
 		return this.id;
+	}
+
+	// get speed //
+	this.getSpeed = function ()
+	{
+		return this.speed;
+	}
+
+	// new speed //
+	this.setSpeed = function (newSpeed)
+	{
+		this.speed = newSpeed;
 	}
 
 
@@ -101,7 +115,7 @@ var Character = function ()
 
 
 	// look //
-	this.look = function (direction,cMap,cScreen)
+	this.look = function (direction, cMap, cScreen)
 	{
 
 		switch(direction)
@@ -110,47 +124,83 @@ var Character = function ()
 			// UP //
 			case MOVE.UP:
 
-				console.log("Look: UP");
-
 				currentPos = this.getPos();
 
+				if (currentPos.x <= 1)
+				{
+					result = false;
+					break;
+				}
+
+				console.log("Look: UP");
 				console.log("Look Position:", currentPos.x-1 , currentPos.y);
 
 				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)-1, currentPos.y-1);
 
 				result = this.think(value);
+
+				if (result == true)
+				{
+					cMap.renderingCell(currentPos);
+					this.walk(MOVE.UP);
+					newPos = this.getPos();
+					this.refresh(newPos, cMap, cScreen);
+				}
 				
 				break;
 			
 			// Down //
 			case MOVE.DOWN:
 
-				console.log("Look: Down");
-
 				currentPos = this.getPos();
 
+				if (currentPos.x >= 10)
+				{
+					result = false;
+					break;
+				}
+
+				console.log("Look: Down");
 				console.log("Look Position:", currentPos.x+1 , currentPos.y);
 
 				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)+1, currentPos.y-1);
-
 				result = this.think(value);
 
-
+				if (result == true)
+				{
+					cMap.renderingCell(currentPos);
+					this.walk(MOVE.DOWN);
+					newPos = this.getPos();
+					this.refresh(newPos, cMap, cScreen);
+				}
   				break;
 
 
   			// Left //
 			case MOVE.LEFT:
 
-				console.log("Look: Left");
-
 				currentPos = this.getPos();
 
+				if (currentPos.y <= 1)
+				{
+					result = false;
+					break;
+				}
+
+				console.log("Look: Left");
 				console.log("Look Position:", currentPos.x, currentPos.y-1);
 
 				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)-1);
 
 				result = this.think(value);
+
+				if (result == true)
+				{
+					cMap.renderingCell(currentPos);
+					this.walk(MOVE.LEFT);
+					newPos = this.getPos();
+					this.refresh(newPos, cMap, cScreen);
+				}
 
   				break;
 
@@ -158,15 +208,28 @@ var Character = function ()
 			// Right //
 			case MOVE.RIGHT:
 
-				console.log("Look: Right");
-
 				currentPos = this.getPos();
+				
+				if (currentPos.y >= 10)
+				{
+					result = false;
+					break;
+				}
 
+				console.log("Look: Right");
 				console.log("Look Position:", currentPos.x, currentPos.y+1);
 
 				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)+1);
 
 				result = this.think(value);
+
+				if (result == true)
+				{
+					cMap.renderingCell(currentPos);
+					this.walk(MOVE.RIGHT);
+					newPos = this.getPos();
+					this.refresh(newPos, cMap, cScreen);
+				}
 
   				break;
 
@@ -268,7 +331,7 @@ var Character = function ()
 		console.log("Energy:",energy - 1);
 
 		if (this.getEnergy() < 1)
-			this.die();
+			this.die = true;
 	}
 
 
@@ -281,10 +344,16 @@ var Character = function ()
 	}
 
 
-	// die //
-	this.die = function ()
+	// refresh //
+	this.refresh = function (currentPos, cMap, cScreen)
 	{
-		console.log("Robot Die");
+		retMap = cMap.setMapPosition(currentPos.x-1, currentPos.y-1, this.getId() );
+
+		cScreen.clean();
+
+		retMap = cMap.getMap();
+
+		cMap.renderingMap(retMap);
 	}
 
 }
