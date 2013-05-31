@@ -9,7 +9,7 @@ var Character = function ()
 
 	this.id	= 5;
 	this.energy = 50;
-	this.pos = {x: 1, y: 1};
+	this.pos = {x: 0, y: 0};
 	this.die = false;
 	this.speed = 300;
 
@@ -128,16 +128,16 @@ var Character = function ()
 
 				currentPos = this.getPos();
 
-				if (currentPos.x <= 1)
+				if (currentPos.x <= 0)
 				{
 					status = false;
 					break;
 				}
 
 				console.log("Look: UP");
-				console.log("Look Position:", currentPos.x-1 , currentPos.y);
+				console.log("Look Position:", currentPos.x-1, currentPos.y);
 
-				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)-1, currentPos.y-1);
+				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, currentPos.y );
 
 				status = this.think(value);
 
@@ -165,7 +165,7 @@ var Character = function ()
 				console.log("Look: Down");
 				console.log("Look Position:", currentPos.x+1 , currentPos.y);
 
-				value = cMap.getMapPosition(cMap.getMap(), (currentPos.x-1)+1, currentPos.y-1);
+				value = cMap.getMapPosition(cMap.getMap(), currentPos.x+1, currentPos.y);
 				status = this.think(value);
 
 				if (status != OBJECT.ROCK &&  status != OBJECT.WALL)
@@ -257,7 +257,7 @@ var Character = function ()
 
 				P = this.getPos();
 
-				if (P.x > 1)
+				if (P.x > 0)
 				{
 					this.setPos(P.x-1 , P.y);
 					console.log("Current Position:",P.x-1, P.y);
@@ -349,7 +349,7 @@ var Character = function ()
 	// refresh //
 	this.refresh = function (currentPos, cMap, cScreen)
 	{
-		retMap = cMap.setMapPosition(currentPos.x-1, currentPos.y-1, this.getId() );
+		retMap = cMap.setMapPosition(currentPos.x, currentPos.y, this.getId() );
 
 		cScreen.clean();
 

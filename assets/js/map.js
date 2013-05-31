@@ -54,7 +54,7 @@ var Map = function()
         {
             for( y=0; y < this.mapSize; y++)
             {
-                $(this.mapName).append('<li class="Block '+newMap[x][y]+'"> '+ (x+1) +' , '+ (y+1) +' </li>');
+                $(this.mapName).append('<li class="Block '+newMap[x][y]+'"> '+ (x) +' , '+ (y) +' </li>');
                 //console.log (x+1,y+1);
             }
         }
@@ -115,7 +115,7 @@ var Map = function()
     // rendering cell //
     this.renderingCell = function(cellPos)
     {
-        this.setMapPosition(cellPos.x-1, cellPos.y-1, 6);
+        this.setMapPosition(cellPos.x, cellPos.y, 6);
     }
 
     // test map //
@@ -130,17 +130,17 @@ var Map = function()
 
         if(result != STATUS.ERROR)
         {
-            console.log("Mapa tem solução");
+            console.log("testMap: Mapa tem solução");
             
             // show path //
             for (var i = 0; i < result.length; i++) 
             {
-              console.log(result[i].pos.x+1,result[i].pos.y+1);
+              //console.log(result[i].pos.x+1,result[i].pos.y+1);
             };
             return STATUS.SUCCESS;
         }
 
-        console.log("Mapa sem solução");
+        console.log("testMap: Mapa sem solução");
         return STATUS.ERROR;
 
     }
