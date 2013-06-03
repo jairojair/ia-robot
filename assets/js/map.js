@@ -25,7 +25,7 @@ var Map = function()
     
         return  this.map = ([
 
-                    [5,1,0,0,2,0,0,0,4,1],
+                    [5,1,0,0,2,0,0,0,0,1],
                     [0,1,1,1,1,0,1,1,1,1],
                     [0,3,0,0,0,0,0,0,0,0],
                     [0,1,1,1,3,0,0,1,2,0],
@@ -34,7 +34,7 @@ var Map = function()
                     [0,3,0,0,0,1,1,1,3,1],
                     [0,0,1,0,0,0,0,1,0,1],
                     [0,0,1,0,1,0,0,0,0,0],
-                    [0,0,1,0,1,2,0,1,1,0]
+                    [0,0,1,0,1,2,0,1,1,4]
                     ]);
     
     }
@@ -115,7 +115,7 @@ var Map = function()
     // rendering cell //
     this.renderingCell = function(cellPos)
     {
-        this.setMapPosition(cellPos.x, cellPos.y, 6);
+        this.setMapPosition(cellPos.x, cellPos.y, 0);
     }
 
     // test map //
@@ -123,20 +123,18 @@ var Map = function()
     {
 
         // create Graph //
-        cGraph = new Graph(this.getMap());
+        cGraph  = new Graph(this.getMap());
+        cHelper = new Helper();
+        cSearch = new Search(); 
 
         // search path //
-        result = astar.search(cGraph.nodes);
+        result = cSearch.Astar(cGraph.nodes);
 
         if(result != STATUS.ERROR)
         {
             console.log("testMap: Mapa tem solução");
-            
-            // show path //
-            for (var i = 0; i < result.length; i++) 
-            {
-              //console.log(result[i].pos.x+1,result[i].pos.y+1);
-            };
+            //cHelper.printElement(result);
+
             return STATUS.SUCCESS;
         }
 

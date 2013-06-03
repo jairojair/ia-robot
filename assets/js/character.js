@@ -7,11 +7,12 @@
 var Character = function () 
 {
 
-	this.id	= 5;
-	this.energy = 50;
-	this.pos = {x: 0, y: 0};
-	this.die = false;
-	this.speed = 300;
+	this.id 		= 5;
+	this.energy 	= 50;
+	this.pos 		= {x: 0, y: 0};
+	this.lastPos 	= {x: 0, y: 0};
+	this.die 		= false;
+	this.speed 		= 200;
 
 
 	this.getId = function ()
@@ -64,6 +65,20 @@ var Character = function ()
 	this.getPos = function ()
 	{
 		return this.pos;
+	}
+
+
+	// last position //
+	this.setLastPos = function (newPX, newPY)
+	{
+		this.lastPos = {x: newPX, y: newPY};
+	}
+
+
+	// last position //
+	this.getLastPos = function ()
+	{
+		return this.lastPos;
 	}
 
 
@@ -156,7 +171,7 @@ var Character = function ()
 
 				currentPos = this.getPos();
 
-				if (currentPos.x >= 10)
+				if (currentPos.x >= 9)
 				{
 					status = false;
 					break;
@@ -183,7 +198,7 @@ var Character = function ()
 
 				currentPos = this.getPos();
 
-				if (currentPos.y <= 1)
+				if (currentPos.y <= 0)
 				{
 					status = false;
 					break;
@@ -192,7 +207,7 @@ var Character = function ()
 				console.log("Look: Left");
 				console.log("Look Position:", currentPos.x, currentPos.y-1);
 
-				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)-1);
+				value = cMap.getMapPosition(cMap.getMap(), currentPos.x, currentPos.y-1);
 
 				status = this.think(value);
 
@@ -212,7 +227,7 @@ var Character = function ()
 
 				currentPos = this.getPos();
 				
-				if (currentPos.y >= 10)
+				if (currentPos.y >= 9)
 				{
 					status = false;
 					break;
@@ -221,7 +236,7 @@ var Character = function ()
 				console.log("Look: Right");
 				console.log("Look Position:", currentPos.x, currentPos.y+1);
 
-				value = cMap.getMapPosition(cMap.getMap(), currentPos.x-1, (currentPos.y-1)+1);
+				value = cMap.getMapPosition(cMap.getMap(), currentPos.x, currentPos.y+1);
 
 				status = this.think(value);
 
@@ -259,6 +274,7 @@ var Character = function ()
 
 				if (P.x > 0)
 				{
+					this.setLastPos(P.x,P.y);
 					this.setPos(P.x-1 , P.y);
 					console.log("Current Position:",P.x-1, P.y);
 					this.subEnergy();
@@ -276,6 +292,7 @@ var Character = function ()
 
 				if (P.x < 10)
 				{
+					this.setLastPos(P.x, P.y);
 					this.setPos(P.x+1 , P.y);
 					console.log("Current Position:",P.x+1, P.y);
 					this.subEnergy();
@@ -291,8 +308,9 @@ var Character = function ()
 
 				P = this.getPos();
 
-				if (P.y > 1)
+				if (P.y > 0)
 				{
+					this.setLastPos(P.x,P.y);
 					this.setPos(P.x , P.y-1);
 					console.log("Current Position:", P.x, P.y-1);
 					this.subEnergy();
@@ -310,6 +328,7 @@ var Character = function ()
 
 				if (P.y < 10)
 				{
+					this.setLastPos(P.x,P.y);
 					this.setPos(P.x , P.y+1);
 					console.log("Current Position:",P.x, P.y+1);
 					this.subEnergy();
@@ -356,6 +375,69 @@ var Character = function ()
 		retMap = cMap.getMap();
 
 		cMap.renderingMap(retMap);
+	}
+
+	// direction //
+	this.pathReal = function (caminhoReal, cRobot, cMap, cScreen)
+	{
+
+	    loop = setInterval(function() { main() }, cRobot.getSpeed() );
+	    
+	    i=0;
+
+	    function main ()
+	    {
+
+	        if (i < caminhoReal.length)
+	        {
+
+	                robotPos = cRobot.getPos();
+
+	                console.log("Corr x:", caminhoReal[i].x, caminhoReal[i].y);
+	                console.log("Robo x:", robotPos.x, robotPos.y);
+
+
+	                if (caminhoReal[i].x > robotPos.x)
+	                {
+	                    console.log("DOWN");
+	                    cRobot.look(MOVE.DOWN, cMap, cScreen);
+	                    i++;
+	                    return;
+	                }
+
+	                if (caminhoReal[i].x < robotPos.x)
+	                {
+	                    console.log("UP");
+	                    cRobot.look(MOVE.UP, cMap, cScreen);
+	                    i++;
+	                    return;
+	                }
+	                
+
+	                if (caminhoReal[i].y < robotPos.y)
+	                {
+	                    console.log("LEFT");
+	                    cRobot.look(MOVE.LEFT, cMap, cScreen);
+	                    i++;
+	                    return;
+	                }
+
+
+	                if (caminhoReal[i].y > robotPos.y)
+	                {
+	                    console.log("RIGHT");
+	                    cRobot.look(MOVE.RIGHT, cMap, cScreen);
+	                    i++;
+	                    return;
+	                }
+
+	                i++;
+	        }
+
+	        clearInterval(loop);
+
+	    }
+		
 	}
 
 }
