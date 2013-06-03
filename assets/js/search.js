@@ -76,7 +76,6 @@ var Search = function ()
         return ret;
     }
 
-
 	// Usado para validar mapa e buscar caminho //
 	this.Astar = function(grid, startx, starty, endx, endy, pathReal) 
     {
@@ -166,7 +165,7 @@ var Search = function ()
                     // Found an optimal (so far) path to this node.  Take score for node to see how good it is.
                     neighbor.visited = true;
                     neighbor.parent = currentNode;
-                    neighbor.h = neighbor.h;
+                    neighbor.h = neighbor.h
                     neighbor.g = gScore;
                     neighbor.f = neighbor.g + neighbor.h;
 

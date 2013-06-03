@@ -21,6 +21,7 @@ var OBJECT = {
 	HEART10	: 2,
 	HEART5	: 3,
 	KEY		: 4,
+	CHAR    : 5,
 	WALL	: 10
 }
 

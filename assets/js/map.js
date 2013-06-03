@@ -9,7 +9,7 @@ var Map = function()
 
     this.mapName = "#mapa";
     this.mapSize = 10;
-    this.map = false;
+    this.map = [];
 
 
     // get current map //
@@ -42,7 +42,34 @@ var Map = function()
     // create dinamic map //
     this.dinamicMap = function ()
     {
-        // the code //
+
+        var map = [];
+
+        for (var x=0; x < this.mapSize; x++) 
+        {
+            var row = [];
+
+            for(var y=0; y < this.mapSize; y++) 
+            {
+
+                var isWall = Math.floor(Math.random()*(1/.2));
+                if(isWall == 0) 
+                {
+                    row.push(OBJECT.ROCK);
+                }
+                else  {
+                    row.push(OBJECT.GRASS);
+                }
+            }
+            
+            map.push(row);
+        }
+
+        map[0][0] = OBJECT.CHAR;
+        map[9][9] = OBJECT.KEY;
+        
+        this.map = map;
+        return this.map;
     }
 
 

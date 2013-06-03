@@ -9,14 +9,12 @@ $('#newGameIA').click ( function()
     var mSearch = new Search();
     var mHelper = new Helper();
 
-
-    mScreen.clean();
-    mMap.staticMap();
-
-
     do {
+        
+        mScreen.clean();
 
-        // Inserir metodo para gerar mapa dinamico aqui //
+        mMap.dinamicMap();
+        //mMap.staticMap();
         testResult = mMap.testMap();
 
     }while (testResult != STATUS.SUCCESS);

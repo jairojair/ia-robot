@@ -7,7 +7,7 @@
 var Character = function () 
 {
 
-	this.id 		= 5;
+	this.id 		= OBJECT.CHAR;
 	this.energy 	= 50;
 	this.pos 		= {x: 0, y: 0};
 	this.lastPos 	= {x: 0, y: 0};
