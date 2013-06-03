@@ -30,18 +30,18 @@ Definir uma heurística que faça o robô, caminhar da posição ( 1,1 ) até o 
 --
 **a. As posições da matriz podem ser divididas em dois tipos:**
 
-- Posições com obstáculos, pelos quais o robô nao poderá passar ( posições escuras ).
+- Posições com obstáculos, pelos quais o robô nao poderá passar (Pedras).
  
-- Posições sem obstáculos, pelas quais o robô pode caminhar ( posições claras ). 
+- Posições sem obstáculos, pelas quais o robô pode caminhar (Gramas). 
 
 *Obs.* A posição dos estados inicial e final não podem ser posições escuras.
 
 --
 **b. O robô inicia sua caminhada pelo labirinto com 50 "pontos" de energia, e a cada movimento, perde 1 ponto, o jogo pode terminar de duas formas:**
 
-- Quando chega a zero ele "morre" e o jogo termina ( perdeu ).
+- Quando chega a zero ele "morre" e o jogo termina ( Perdeu ).
 
-- Quando chega a posição final do jogo também termina ( ganhou ).
+- Quando chega a posição final do jogo também termina ( Ganhou ).
 
 --
 **c. Considerar opções que o sistema deverá ter:**
