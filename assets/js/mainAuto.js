@@ -28,7 +28,7 @@ $('#newGameIA').click ( function()
     mGraph = new Graph(mMap.getMap());
 
     // Caminho encontrado pela busca //
-    caminho = mSearch.path(mGraph.nodes);
+    caminho = mSearch.Astar(mGraph.nodes,null,null,null,null,true);
 
     // Imprime o caminho //
     //mHelper.printElement(caminho);
@@ -50,7 +50,7 @@ $('#newGameIA').click ( function()
             endPosx = (caminho[prox].x);
             endPosy = (caminho[prox].y);
 
-            result = mSearch.real(mGraph.nodes, startPosx, startPosy, endPosx, endPosy);
+            result = mSearch.Astar(mGraph.nodes, startPosx, startPosy, endPosx, endPosy);
 
             result.forEach( function (obj) 
             {
