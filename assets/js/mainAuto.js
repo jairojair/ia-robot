@@ -34,7 +34,7 @@ $('#newGameIA').click ( function()
     
 
     for (var i = 0; i < caminho.length; i++) 
-    {
+    {       
         prox = i+1;
 
         //console.log(prox);

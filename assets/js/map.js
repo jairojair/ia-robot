@@ -52,7 +52,8 @@ var Map = function()
             for(var y=0; y < this.mapSize; y++) 
             {
 
-                var isWall = Math.floor(Math.random()*(1/.2));
+                var isWall = Math.floor(Math.random()*(1/.3));
+
                 if(isWall == 0) 
                 {
                     row.push(OBJECT.ROCK);
@@ -66,7 +67,27 @@ var Map = function()
         }
 
         map[0][0] = OBJECT.CHAR;
-        map[9][9] = OBJECT.KEY;
+
+        for (var i = 0; i < 4; i++) 
+        {
+           hdez1 = Math.floor(Math.random()*(1/.10));
+           hdez2 = Math.floor(Math.random()*(1/.10));
+           map[hdez1][hdez2] = OBJECT.HEART5;
+        };
+
+        for (var i = 0; i < 2; i++) 
+        {
+           hcinco1 = Math.floor(Math.random()*(1/.10));
+           hcinco2 = Math.floor(Math.random()*(1/.10));
+           map[hcinco1][hcinco2] = OBJECT.HEART10;
+        };
+
+
+        pos1 = Math.floor(Math.random()*(1/.10));
+        pos2 = Math.floor(Math.random()*(1/.10));
+
+        //map[9][9] = OBJECT.KEY;
+        map[pos1][pos2] = OBJECT.KEY;
         
         this.map = map;
         return this.map;
@@ -161,6 +182,7 @@ var Map = function()
         {
             console.log("testMap: Mapa tem solução");
             //cHelper.printElement(result);
+            console.log(result.length);
 
             return STATUS.SUCCESS;
         }

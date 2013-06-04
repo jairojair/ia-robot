@@ -76,11 +76,21 @@ var Search = function ()
         return ret;
     }
 
+    this.manhattan = function(pos0, pos1) 
+    {
+        // See list of heuristics: http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
+
+        var d1 = Math.abs (pos1.x - pos0.x);
+        var d2 = Math.abs (pos1.y - pos0.y);
+        return d1 + d2;
+    }
+
 	// Usado para validar mapa e buscar caminho //
 	this.Astar = function(grid, startx, starty, endx, endy, pathReal) 
     {
 
         this.init(grid);
+        heuristic = this.manhattan;
         var openHeap = this.heap();
 
         var path = [];
@@ -102,12 +112,11 @@ var Search = function ()
         while(openHeap.size() > 0) 
         {
 
-            // Grab the lowest f(x) to process next.  Heap keeps this sorted for us.
             var currentNode = openHeap.pop();
 
             path.push(currentNode);
 
-            // End case -- result has been found, return the traced path.
+            // se achar o final ou a chave retorna o caminho //
             if(currentNode.type === OBJECT.KEY || currentNode === end) 
             {
                 if(pathReal == true)
@@ -146,29 +155,30 @@ var Search = function ()
                 // The g score is the shortest distance from start to current node.
                 // Check if the path is smaller than all.
                 var gScore = currentNode.g + neighbor.cost;
-
-                if(neighbor.type == OBJECT.HEART10) 
-                {
-                    gScore = 10;
-                }
-
-                if(neighbor.type == OBJECT.HEART5) 
-                {
-                    gScore = 5;
-                }
-
                 var beenVisited = neighbor.visited;
 
                 if(!beenVisited || gScore < neighbor.g) 
                 {
 
-                    // Found an optimal (so far) path to this node.  Take score for node to see how good it is.
+                    // G = é o custo do movimento para se mover do ponto de início até o proximo //
+                    // H = é o custo estimado do movimento para mover do ponto x até o final //
+                    // F = G + H 
                     neighbor.visited = true;
                     neighbor.parent = currentNode;
-                    neighbor.h = neighbor.h
+
+                    if (startx == null)
+                    {
+                        neighbor.f = neighbor.g + neighbor.h;
+
+                    }else {
+
+                        neighbor.h = neighbor.h || heuristic(neighbor.pos, end.pos);
+                    }
+
+
                     neighbor.g = gScore;
                     neighbor.f = neighbor.g + neighbor.h;
-
+                    
                     if (!beenVisited) 
                     {
                         // Pushing to heap will put it in proper place based on the 'f' value.
