@@ -54,5 +54,5 @@ Definir uma heurística que faça o robô, caminhar da posição ( 1,1 ) até o 
 
 Exemplo de Labirinto:
 
-![image](assets/img/repo/labirinto.png)
+![image](public/img/repo/labirinto.png)
 
